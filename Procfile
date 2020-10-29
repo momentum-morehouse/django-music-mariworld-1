@@ -1,0 +1,1 @@
+web: gunicorn django-music-mariworld-1.wsgi
