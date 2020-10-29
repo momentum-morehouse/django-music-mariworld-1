@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 
     # Project-specific
     'users',
+    'albums',
 ]
 
 MIDDLEWARE = [
@@ -87,7 +88,16 @@ WSGI_APPLICATION = 'django_music.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {'default': env.db()}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'djangomusic',
+        'USER': 'djangomusic',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -128,6 +138,8 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
+STATIC_ROOT='staticfiles'
+
 # Custom user model
 
 AUTH_USER_MODEL = 'users.User'
@@ -139,3 +151,6 @@ INTERNAL_IPS = [
     '127.0.0.1',
     # ...
 ]
+
+import django_heroku
+django_heroku.settings(locals())

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for album in albums %}
+<div class="albums">
+    <h2>Title: {{album.title}}</h2>
+    <img src="{{album.img_url}}" alt="image of album">
+    <h4>Artist: {{album.artist}}</h4>
+    <p>Release Date: {{album.year_released}}</p>
+</div>
+{% endfor %}
+{% endblock %}
